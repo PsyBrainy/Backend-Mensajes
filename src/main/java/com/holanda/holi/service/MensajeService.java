@@ -1,7 +1,7 @@
 package com.holanda.holi.service;
 
 import com.holanda.holi.mapper.MensajeMapper;
-import com.holanda.holi.model.MensajeDto;
+import com.holanda.holi.dto.MensajeDTO;
 import com.holanda.holi.repository.MensajeCrudRepo;
 import com.holanda.holi.repository.entity.MensajeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class MensajeService {
     @Autowired
     private MensajeCrudRepo repo;
 
-    public List<MensajeDto> getAll() {
+    public List<MensajeDTO> getAll() {
 
         return repo.findAll()
                 .stream()
@@ -25,7 +25,7 @@ public class MensajeService {
                 .collect(Collectors.toList());
     }
 
-    public MensajeDto create(MensajeDto productDto) {
+    public MensajeDTO create(MensajeDTO productDto) {
         MensajeEntity entity = MensajeMapper.toMensajeEntity(productDto);
         return MensajeMapper.toMensajeDto(repo.save(entity));
     }

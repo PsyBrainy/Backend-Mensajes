@@ -9,5 +9,4 @@ public class HoliApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HoliApplication.class, args);
 	}
-
 }
