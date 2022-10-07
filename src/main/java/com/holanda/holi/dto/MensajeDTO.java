@@ -1,14 +1,14 @@
-package com.holanda.holi.model;
+package com.holanda.holi.dto;
 
-public class MensajeDto {
+public class MensajeDTO {
 
     private String fecha;
     private String texto;
     private String autor;
 
-    public MensajeDto(){}
+    public MensajeDTO(){}
 
-    public MensajeDto(String texto, String autor) {
+    public MensajeDTO(String texto, String autor) {
         this.texto = texto;
         this.autor = autor;
     }

@@ -1,14 +1,14 @@
 package com.holanda.holi.mapper;
 
-import com.holanda.holi.model.MensajeDto;
+import com.holanda.holi.dto.MensajeDTO;
 import com.holanda.holi.repository.entity.MensajeEntity;
 
 import java.text.SimpleDateFormat;
 
 public class MensajeMapper {
 
-    public static MensajeDto toMensajeDto(MensajeEntity entity){
-        MensajeDto productDto = new MensajeDto();
+    public static MensajeDTO toMensajeDto(MensajeEntity entity){
+        MensajeDTO productDto = new MensajeDTO();
         productDto.setTexto(entity.getTexto());
         productDto.setAutor(entity.getAutor());
 
@@ -19,7 +19,7 @@ public class MensajeMapper {
         return productDto;
     }
 
-    public static MensajeEntity toMensajeEntity(MensajeDto dto){
+    public static MensajeEntity toMensajeEntity(MensajeDTO dto){
         MensajeEntity productEntity = new MensajeEntity();
         productEntity.setTexto(dto.getTexto());
         productEntity.setAutor(dto.getAutor());
