@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,6 +24,12 @@ public class MensajeService {
                 .sorted(Comparator.comparing(MensajeEntity::getCreateOn))
                 .map(MensajeMapper::toMensajeDto)
                 .collect(Collectors.toList());
+    }
+
+    public MensajeDTO remove (Integer id) {
+        MensajeDTO mensajeDTO = repo.findById(id).map(MensajeMapper::toMensajeDto).orElseThrow(NoSuchElementException::new);
+        repo.deleteById(id);
+        return mensajeDTO;
     }
 
     public MensajeDTO create(MensajeDTO productDto) {

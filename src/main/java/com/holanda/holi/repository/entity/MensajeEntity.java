@@ -1,13 +1,17 @@
 package com.holanda.holi.repository.entity;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "mensaje")
+@SQLDelete(sql = "UPDATE mensaje SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 public class MensajeEntity {
 
     @Id
@@ -24,6 +28,8 @@ public class MensajeEntity {
     @Column(name = "updated_on")
     @UpdateTimestamp
     private Date updatedOn;
+    @Column(name = "deleted")
+    private boolean deleted = Boolean.FALSE;
 
     public Integer getId() {
         return id;
@@ -63,5 +69,13 @@ public class MensajeEntity {
 
     public void setUpdatedOn(Date updatedOn) {
         this.updatedOn = updatedOn;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
