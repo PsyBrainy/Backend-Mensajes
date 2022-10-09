@@ -29,4 +29,9 @@ public class MensajeController {
     public ResponseEntity<MensajeDTO> createMensaje(@RequestBody MensajeDTO productDto){
         return new ResponseEntity<>(service.create(productDto), HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<MensajeDTO> removeMensaje (@PathVariable(name = "id") Integer id) {
+        return new ResponseEntity<>(service.remove(id), HttpStatus.OK );
+    }
 }
