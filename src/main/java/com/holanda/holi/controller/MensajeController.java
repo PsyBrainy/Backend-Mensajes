@@ -24,7 +24,7 @@ public class MensajeController {
     }
 
     @CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.106:3000", "http://localhost:3001", "http://192.168.0.64:3000", "http://192.168.0.64:3001"})
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
    @PostMapping
     public ResponseEntity<MensajeDTO> createMensaje(@RequestBody MensajeDTO productDto){
         return new ResponseEntity<>(service.create(productDto), HttpStatus.CREATED);
