@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.NoSuchElementException;
 
 @ControllerAdvice
 public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
@@ -22,9 +23,15 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    protected ResponseEntity<?> badCredentialsException(Exception e, HttpServletRequest req){
+    protected ResponseEntity<?> badCredentialsException(Exception e, HttpServletRequest req) {
         ErrorResponse errorFound = new ErrorResponse(403, new Date(), "Usuario o contrasenia incorrectos", req.getRequestURI());
         return new ResponseEntity<>(errorFound, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    protected ResponseEntity<?> noSuchElementException(Exception e, HttpServletRequest req){
+        ErrorResponse errorFound = new ErrorResponse(404, new Date(), "No se encontro con ese id", req.getRequestURI());
+        return new ResponseEntity<>(errorFound, HttpStatus.NOT_FOUND);
     }
 
 }

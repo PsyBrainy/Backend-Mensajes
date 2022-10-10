@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class ErrorResponse {
 
-
     private int status;
 
     private Date timestamp;
