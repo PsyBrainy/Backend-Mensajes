@@ -34,4 +34,10 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errorFound, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(BadCredentialsException.class)
+    protected ResponseEntity<?> badCredentialsException(Exception e, HttpServletRequest req){
+        ErrorResponse errorFound = new ErrorResponse(403, new Date(), "Usuario o contrasenia incorrectos", req.getRequestURI());
+        return new ResponseEntity<>(errorFound, HttpStatus.FORBIDDEN);
+    }
+
 }
