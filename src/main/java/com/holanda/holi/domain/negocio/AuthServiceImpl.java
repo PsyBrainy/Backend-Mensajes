@@ -11,10 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthServiceImpl implements AuthService  {
+
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private AuthRepository repository;
@@ -41,6 +46,7 @@ public class AuthServiceImpl implements AuthService  {
     @Override
     public void registrarUsuario(RegistroRequest registroRequest){
         String rol = registroRequest.getNombre().equalsIgnoreCase("admin") ? "ROLE_ADMIN" : "ROLE_USER";
+        registroRequest.setPassword(passwordEncoder.encode(registroRequest.getPassword()));
         repository.saveUser(registroRequest, rol);
     }
 }
