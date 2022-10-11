@@ -10,4 +10,6 @@ public interface MensajesService {
     List<MensajeResponse> getAllMensajes();
 
     MensajeResponse enviarMensaje(MensajeRequest mensajeRequest);
+
+    MensajeResponse borrarMensaje(Integer id);
 }

@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // MENSAJES
                 .antMatchers(HttpMethod.GET,"/api/mensaje").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/mensaje").permitAll()
+                .antMatchers(HttpMethod.DELETE,"/api/mensaje/delete/**").permitAll()
                 // AUTHENTICATION
                 .antMatchers("/api/auth/**").permitAll()
                 //

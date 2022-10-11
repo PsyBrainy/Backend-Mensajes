@@ -10,4 +10,6 @@ public interface MensajeRepository {
     Stream<MensajeResponse> getAllMensajes();
 
     MensajeResponse enviarMensaje(MensajeRequest mensajeRequest);
+
+    MensajeResponse deleteMensaje(Integer id);
 }

@@ -28,4 +28,10 @@ public class MensajeController {
     public ResponseEntity<MensajeResponse> enviarMensaje(@RequestBody MensajeRequest mensajeRequest){
         return new ResponseEntity<>(service.enviarMensaje(mensajeRequest), HttpStatus.CREATED);
     }
+
+    @CrossOrigin(origins = {"http://localhost:3000", "http://192.168.0.106:3000", "http://localhost:3001", "http://192.168.0.64:3000", "http://192.168.0.64:3001"})
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<MensajeResponse> removeMensaje(@PathVariable(name = "id") Integer id) {
+        return new ResponseEntity<>(service.borrarMensaje(id), HttpStatus.OK );
+    }
 }
