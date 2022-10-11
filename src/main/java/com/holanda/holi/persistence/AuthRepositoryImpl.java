@@ -42,7 +42,7 @@ public class AuthRepositoryImpl implements AuthRepository {
 
     @Override
     public UsuarioEntity findByEmail(String username){
-        return usuarioCrudRepo.findByEmail(username)
+        return usuarioCrudRepo.findByUsernameOrEmail(username, username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado con ese username o email: " + username));
     }
 
