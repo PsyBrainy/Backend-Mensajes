@@ -28,6 +28,6 @@ public class AuthController {
     @PostMapping("/registrar")
     public ResponseEntity<?> registrarUsuario (@RequestBody RegistroRequest registroRequest) {
         service.registrarUsuario(registroRequest);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
